@@ -20,11 +20,11 @@ def callback(ch, method, properties, body):
 
     if time.time()-timestamp > 10:
         # ignore old events
-        # LCD max number of character displayed per line: x
+        # LCD max number of character displayed per line: 16
         return
 
     if headers.get('authorized', False):
-        conn.publish('doorbot.lcd.display', {'line1': 'Join us at' , 'line2': 'github.com/edinburghhacklab/hacksense', 'flash': 3})
+        conn.publish('doorbot.lcd.display', {'line1': 'Poke hacksense' , 'line2': 'via github.com', 'flash': 3})
     else:
         s = '%-20s' % (headers.get('uid', ''))
         conn.publish('doorbot.lcd.display', {'line1': 'Unknown Card', 'line2': s[2:18], 'flash': 5})
