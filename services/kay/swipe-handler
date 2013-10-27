@@ -20,6 +20,7 @@ def callback(ch, method, properties, body):
 
     if time.time()-timestamp > 10:
         # ignore old events
+        # LCD max number of character displayed per line: x
         return
 
     if headers.get('authorized', False):
